@@ -18,6 +18,7 @@ import java.util.UUID;
 
 
 @Service
+@Slf4j
 public class UploadFileServiceImpl implements UploadFileService {
     @Autowired
     private Cloudinary cloudinary;
@@ -30,9 +31,8 @@ public class UploadFileServiceImpl implements UploadFileService {
         File fileUpload = convertFile(file);
 
         cloudinary.uploader().upload(fileUpload, ObjectUtils.asMap("public_id", publicValue));
-        cloudinary.url().generate(publicValue + "." + extension);
         cleanDisk(fileUpload);
-        return null;
+        return  cloudinary.url().generate(publicValue + "." + extension);
     }
 
     private File convertFile(MultipartFile file) {
@@ -52,7 +52,7 @@ public class UploadFileServiceImpl implements UploadFileService {
             Path filePath = file.toPath();
             Files.delete(filePath);
         } catch (IOException e) {
-
+            log.error("Không thể xóa file: " + file.getName(), e);
         }
     }
 
@@ -62,6 +62,7 @@ public class UploadFileServiceImpl implements UploadFileService {
     }
 
     public String[] getFilename(String originalName){
-        return originalName.split("\\.");
+        int lastDot = originalName.lastIndexOf(".");
+        return new String[]{originalName.substring(0, lastDot), originalName.substring(lastDot + 1)};
     }
 }

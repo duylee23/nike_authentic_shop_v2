@@ -1,5 +1,5 @@
 .card-flip {
-    perspective: 1000px;
+    perspective: 10000px;
 }
 
 .card-front,

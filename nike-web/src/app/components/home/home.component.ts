@@ -8,12 +8,12 @@ import 'swiper/css/pagination';
 import { SliderComponent } from '../../shared/slider/slider.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [SliderComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    selector: 'app-home',
+    standalone: true,
+    imports: [SliderComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class HomeComponent   {

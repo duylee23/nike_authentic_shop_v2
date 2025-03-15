@@ -3,12 +3,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ThreeSceneComponent } from '../../shared/three-scene/three-scene.component';
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [MatSlideToggleModule, MatIconModule, RouterModule, CommonModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+    selector: 'app-header',
+    imports: [MatSlideToggleModule, MatIconModule, RouterModule, CommonModule, ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.css'
 })
 export class HeaderComponent {
   constructor(private router: Router){}
