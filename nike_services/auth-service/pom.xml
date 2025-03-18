@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>com.nike</groupId>
-    <artifactId>product-service</artifactId>
+    <artifactId>auth-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>product-service</name>
-    <description>Product Service</description>
+    <name>auth-service</name>
+    <description>Auth Service</description>
 
     <properties>
         <java.version>17</java.version>
@@ -35,6 +35,8 @@
             <artifactId>cloudinary-http45</artifactId>
             <version>1.39.0</version>
         </dependency>
+
+
         <dependency>
             <groupId>com.cloudinary</groupId>
             <artifactId>cloudinary-core</artifactId>

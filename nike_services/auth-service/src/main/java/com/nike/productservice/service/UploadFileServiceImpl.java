@@ -3,10 +3,8 @@ package com.nike.productservice.service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.nike.productservice.dto.ProductDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,14 +15,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
 
-
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class UploadFileServiceImpl implements UploadFileService {
-
     private final Cloudinary cloudinary;
-
     @Override
     public String uploadFile(MultipartFile file) throws IOException {
         assert file.getOriginalFilename() != null;

@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: duylee233
-    url: jdbc:mysql://localhost:3306/product
+    url: jdbc:mysql://localhost:3306/auth
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
