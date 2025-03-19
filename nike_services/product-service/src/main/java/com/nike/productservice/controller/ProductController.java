@@ -16,8 +16,10 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductService productService;
-    private final UploadFileService uploadFileService;
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private UploadFileService uploadFileService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/page")
     public List<Product> hello(@RequestBody ProductDTO dto) throws IOException {

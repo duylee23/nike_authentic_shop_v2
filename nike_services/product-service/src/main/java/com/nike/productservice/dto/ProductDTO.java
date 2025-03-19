@@ -1,9 +1,12 @@
 package com.nike.productservice.dto;
 
-import lombok.Data;
+import lombok.*;
 
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO {
     private String name;
     private String description;
