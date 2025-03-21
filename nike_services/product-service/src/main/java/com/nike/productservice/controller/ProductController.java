@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/product")
 public class ProductController {
     @Autowired
     private ProductService productService;
