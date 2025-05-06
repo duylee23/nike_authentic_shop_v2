@@ -2,36 +2,50 @@ package com.nike.productservice.controller;
 
 
 import com.nike.productservice.dto.ProductDTO;
-import com.nike.productservice.entity.Product;
+import com.nike.productservice.dto.response.BaseResponse;
 import com.nike.productservice.service.ProductService;
 import com.nike.productservice.service.UploadFileService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class ProductController {
-    @Autowired
-    private ProductService productService;
-    @Autowired
-    private UploadFileService uploadFileService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/page")
-    public List<Product> hello(@RequestBody ProductDTO dto) throws IOException {
-        return this.productService.getPage(dto);
-    }
+    private final ProductService productService;
+    private final UploadFileService uploadFileService;
+
+//    @GetMapping("/page")
+//    public BaseResponse<PageResponse<ProductDTO>> getProductList(@RequestBody ProductDTO dto) throws IOException {
+//        return this.productService.getPage(dto);
+//    }
 
     @PostMapping(value = "/image")
     public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         return uploadFileService.uploadFile(file);
     }
 
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/{productType}/add")
+    public BaseResponse<ProductDTO> createProduct(
+            @PathVariable String productType,
+            @RequestBody ProductDTO dto) throws IOException {
+        try{
+            productService.createProduct(productType, dto);
+            return BaseResponse.<ProductDTO>builder()
+                    .message("Create new product successfully")
+                    .data(dto)
+                    .build();
+        } catch (Exception e) {
+            return BaseResponse.<ProductDTO>builder()
+                    .message("Error when creating new product!")
+                    .build();
+        }
+    }
+
+    @PostMapping(value = "/upload")
     public String uploadFile(@RequestBody ProductDTO dto) throws IOException {
         return productService.addProduct(dto);
     }

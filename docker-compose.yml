@@ -20,11 +20,14 @@ services:
     environment:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: duylee233
+      MYSQL_ROOT_PASSWORD: duylee233
       MYSQL_DATABASE: product
     ports: 
-      - "3306:3306"
+      - "6603:3306"
     volumes: 
       - mysql_data:/var/lib/mysql
+    networks: 
+      - mynetwork
 
   product-service: 
     build:
