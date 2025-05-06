@@ -7,6 +7,7 @@ import com.nike.productservice.stategy.ProductStrategy;
 import com.nike.productservice.stategy.ProductStrategyFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Service
